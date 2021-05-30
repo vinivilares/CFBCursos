@@ -37,7 +37,7 @@ function moverParar() {
 function mover() {
     if (!estado) {
         estado = 1;
-        jog.style.backgroundColor = "00f";
+        jog.style.backgroundColor = "#00f";
         anima = requestAnimationFrame(game);
     }
 }
