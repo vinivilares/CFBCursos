@@ -4,6 +4,8 @@ var imgAtual;
 var maxImg;
 var tmp;
 var tempoTroca;
+var imgA;
+var imgP;
 
 function preCarregamento() {
     var s = 1;
@@ -34,6 +36,32 @@ function troca() {
         imgAtual = 0;
     }
     carregarImg(imgAtual);
+}
+
+
+// Criar botoes para mudar a foto do slider
+
+imgP = document.getElementById("imgP").addEventListener("click", proxima);
+imgA = document.getElementById("imgA").addEventListener("click", anterior);
+
+function proxima() {
+    if (imgAtual == 4) {
+        imgAtual = 0;
+        carregarImg(imgAtual);
+    } else {
+        imgAtual++;
+        carregarImg(imgAtual);
+    }
+}
+
+function anterior() {
+    if (imgAtual == 0) {
+        imgAtual = 4;
+        carregarImg(imgAtual);
+    } else {
+        imgAtual--;
+        carregarImg(imgAtual);
+    }
 }
 
 window.addEventListener("load", iniciar);
