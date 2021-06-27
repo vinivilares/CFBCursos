@@ -1,6 +1,6 @@
 var biblioteca = ["javascript", "curso", "computador"]; // possiveis palavras
-var qtde = biblioteca.length-1; // pega a quantidade de palavras que existem no vetor biblioteca
-var pos = Math.round(Math.random()*qtde); // armazena um numero aleatorio entre 0 e a qtde para colocar na posição do vetor posteriormente
+var qtde = biblioteca.length - 1; // pega a quantidade de palavras que existem no vetor biblioteca
+var pos = Math.round(Math.random() * qtde); // armazena um numero aleatorio entre 0 e a qtde para colocar na posição do vetor posteriormente
 var palavra = biblioteca[pos];
 var tam = palavra.length;
 var cxLetras = [];
@@ -13,12 +13,13 @@ var jogando = false;
 
 function defineLetras(l) {
     var obj;
-    for (var i = 0; i < 20; i++) {
-        obj = document.getElementById("letra"+i).value="";
-        obj = document.getElementById("letra"+i).style.display = "none";
+    for (var i = 0; i < tam; i++) {
+        document.getElementById("dvpalavra").innerHTML += `<input type="text" id="letra${i}" class="letra" maxlength="1">`
+        obj = document.getElementById("letra" + i).value = "";
+        obj = document.getElementById("letra" + i).style.display = "none";
     }
     for (var i = 0; i < l; i++) {
-        obj = document.getElementById("letra"+i).style.display = "inline-block";
+        obj = document.getElementById("letra" + i).style.display = "inline-block";
     }
 }
 
@@ -31,7 +32,6 @@ function jogar() {
     } else {
         if (jogando) {
             var jog;
-            var obj;
             var letraTmp;
             var letra;
             var pesq;
@@ -41,26 +41,19 @@ function jogar() {
             acertou = false;
             while (pesq != null) {
                 letraTmp = palavra.search(letra);
-                obj = document.getElementById("letra" + letraTmp).value =letra;
+                obj = document.getElementById("letra" + letraTmp).value = letra;
                 palavra = palavra.replace(letra, "0");
                 acertos++;
                 pesq = palavra.match(letra);
                 acertou = true;
             }
-            if(!acertou) {
+            if (!acertou) {
                 document.getElementById("dvletrasdigitadas").innerHTML += letra.toUpperCase();
-                erros++;
-                if (erros < 7) {
-                    desenhos[erros].style.display = "block";
-                } else {
-                    document.getElementById("cabeca").src = "img/cabeca2.png"
-                    document.getElementById("dvmsg").innerHTML = "PERDEU";
-                    jogando = false;
-                }
+                errou();
             }
             if (acertos == tam) {
                 document.getElementById("dvmsg").innerHTML = "";
-                document.getElementById("dvmsg").innerHTML = "GANHOU";
+                document.getElementById("dvmsg").innerHTML = "GANHOU!";
                 jogando = false;
             }
         }
@@ -77,7 +70,8 @@ function inicia() {
     erros = 0;
     acertos = false;
     document.getElementById("dvletrasdigitadas").innerHTML = "Letras Digitadas:";
-    pos = Math.round(Math.random()*qtde);
+    
+    pos = Math.round(Math.random() * qtde);
     palavra = biblioteca[pos];
     tam = palavra.length;
     defineLetras(tam);
@@ -95,8 +89,32 @@ function inicia() {
 }
 
 function dica() {
-    alert(palavra);
+    msg = "\n(Perdeu uma tentativa por pedir dica)"
+    if (pos == 0) {
+        alert("Linguagem de programação"+msg)
+    } else if (pos == 1) {
+        alert("Conjunto de conhecimento ciêntifico"+msg)
+    } else if (pos == 2) {
+        alert("Acessa a internet"+msg)
+    }
+    errou();
     jog.focus();
 }
 
+function errou() {
+    erros++;
+    if (erros < 7) {
+        desenhos[erros].style.display = "block";
+    } else {
+        document.getElementById("cabeca").src = "img/cabeca2.png"
+        document.getElementById("dvmsg").innerHTML = "PERDEU!";
+        jogando = false;
+    }
+}
+
 window.addEventListener("load", inicia)
+
+
+// alterar os inputs de letras/ criar dinamicamente um para cada letra
+
+console.log(tam)

@@ -1,10 +1,52 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    box-sizing: border-box;
+}
+
+h1 {
+    margin-top: 1rem;
+    color: #FFF;
+}
+
+button {
+    font-size: 1rem;
+    background-color: #851944;
+    color: #FFF;
+    padding: .5em;
+    border: .2em solid black;
+    margin: 1em auto;
+    text-align: center;
+}
+
+body {
+    background-color: brown;
+}
+
+#content {
+    text-align: center;
+    background-color: brown;
+    width: 80%;
+    margin: auto;
+    min-width: 1270px;
+}
+
 .letra {
+    border: none;
+    background-color: brown;
+    border-bottom: 2px dashed black;
     width: 30px;
     font-size: 30px;
     text-transform: uppercase;
     text-align: center;
     margin: 5px;
     display: none;
+}
+
+.letra:focus {
+    box-shadow: 0 0 0 0;
+    outline: 0;
 }
 
 .letraJ {
@@ -15,47 +57,67 @@
     margin: 5px;
 }
 
+#dvmsg {
+    margin: 1rem;
+    font-size: 1.5rem;
+}
+
+#dvletrasdigitadas {
+    margin: 1rem;
+    color: #FFF;
+}
 .dvdisplay {
     display: block;
 }
 
 #dvForca {
-    position: absolute;
-    left: 150px;
+    position: relative;
+    width: 205px;
+    margin: auto;
 }
 
 #cabeca {
     position: absolute;
-    top: 0px;
-    left: 0px;
 }
 
 #corpo {
     position: absolute;
+    left: 100px;
     top: 200px;
-    left: 105px;
 }
 
 #bracoE {
     position: absolute;
-    top:220px;
-    left: -17px;
+    top: 225px;
+    left: -22px;
 }
 
 #bracoD {
     position: absolute;
-    top: 220px;
-    left: 105px;
+    top: 225px;
+    left: 100px;
 }
 
 #pernaE {
     position: absolute;
-    top: 450px;
-    left: -66px;
+    top: 440px;
+    left: -71px;
 }
 
 #pernaD {
     position: absolute;
-    top: 450px;
-    left: 105px;
+    top: 440px;
+    left: 100px;
+}
+
+#imgForcaE {
+    position: absolute;
+    left: 200px;
+    top: 100px;
+}
+#imgForcaD {
+    position: absolute;
+    right: 200px;
+    top: 100px;
+    transform: rotateY(180deg);
 }

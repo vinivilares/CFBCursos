@@ -8,48 +8,35 @@
     <title>Aula 50 - Resolução do desafio da Forca (Aula 49)</title>
 </head>
 <body>
-    <div id="menu" class="dvdisplay">
-        <button onclick="inicia()">Nova Palavra</button>
-    </div>
-
-    <div id="dvpalavra" class="dvdisplay">
-        <input type="text" id="letra0" class="letra" maxlength="1">
-        <input type="text" id="letra1" class="letra" maxlength="1">
-        <input type="text" id="letra2" class="letra" maxlength="1">
-        <input type="text" id="letra3" class="letra" maxlength="1">
-        <input type="text" id="letra4" class="letra" maxlength="1">
-        <input type="text" id="letra5" class="letra" maxlength="1">
-        <input type="text" id="letra6" class="letra" maxlength="1">
-        <input type="text" id="letra7" class="letra" maxlength="1">
-        <input type="text" id="letra8" class="letra" maxlength="1">
-        <input type="text" id="letra9" class="letra" maxlength="1">
-        <input type="text" id="letra10" class="letra" maxlength="1">
-        <input type="text" id="letra11" class="letra" maxlength="1">
-        <input type="text" id="letra12" class="letra" maxlength="1">
-        <input type="text" id="letra13" class="letra" maxlength="1">
-        <input type="text" id="letra14" class="letra" maxlength="1">
-        <input type="text" id="letra15" class="letra" maxlength="1">
-        <input type="text" id="letra16" class="letra" maxlength="1">
-        <input type="text" id="letra17" class="letra" maxlength="1">
-        <input type="text" id="letra18" class="letra" maxlength="1">
-        <input type="text" id="letra19" class="letra" maxlength="1">
-    </div>
-
-    <div id="dvjogador" class="dvdisplay">
-        <div id="controlesJogador">
-            <input type="text" id="letraJ" class="letraJ" maxlength="1">
-            <button onclick="jogar()">Jogar</button>
-            <button onclick="dica()">Dica</button>
-            <div id="dvmsg"></div><br>
-            <div id="dvletrasdigitadas">Letras Digitadas:</div><br>
+    <div id="content">
+        <h1>Jogo da forca</h1>
+        <div id="menu" class="dvdisplay">
+            <button onclick="inicia()">Nova Palavra</button>
         </div>
-        <div id="dvForca">
-            <img id="cabeca" src="img/cabeca1.png">
-            <img id="corpo" src="img/corpo.png">
-            <img id="bracoE" src="img/bracoE.png">
-            <img id="bracoD" src="img/bracoD.png">
-            <img id="pernaE" src="img/pernaE.png">
-            <img id="pernaD" src="img/pernaD.png">
+        <div id="dvpalavra" class="dvdisplay"></div>
+        <div id="dvjogador" class="dvdisplay">
+            <div id="controlesJogador">
+                    <input type="text" id="letraJ" class="letraJ" maxlength="1">
+                    <button onclick="jogar()" class="botao">Jogar</button>
+                    <button onclick="dica()" class="botao">Dica</button>
+                <div id="dvmsg"></div>
+                <div id="dvletrasdigitadas">Letras Digitadas:</div>
+            </div>
+            <div id="dvForca">
+                <img id="cabeca" src="img/cabeca1.png">
+                <img id="corpo" src="img/corpo.png">
+                <img id="bracoE" src="img/bracoE.png">
+                <img id="bracoD" src="img/bracoD.png">
+                <img id="pernaE" src="img/pernaE.png">
+                <img id="pernaD" src="img/pernaD.png">
+            </div>
+
+            <div id="imgForcaE">
+                <img src="img/forca.png" alt="Imagem de forca esquerda" width="275" height="auto">
+            </div>
+            <div id="imgForcaD">
+                <img src="img/forca.png" alt="Imagem de forca direita" width="275" height="auto">
+            </div>
         </div>
     </div>
 
