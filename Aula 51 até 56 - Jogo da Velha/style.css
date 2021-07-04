@@ -1,0 +1,67 @@
+#dvjogo {
+    width: 160px;
+    height: 160px;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+}
+
+.posJogo {
+    width: 50px;
+    height: 50px;
+    margin: 0;
+    padding: 0;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 40px;
+}
+
+#p1 {
+    border-right: 1px solid black;
+    border-bottom: 1px solid black;
+}
+
+#p2 {
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+    border-bottom: 1px solid black;
+}
+
+#p3 {
+    border-left: 1px solid black;
+    border-bottom: 1px solid black;
+}
+
+#p4 {
+    border-right: 1px solid black;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+}
+
+#p5 {
+    border: 1px solid black;
+}
+
+#p6 {
+    border-left: 1px solid black;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+}
+
+#p7 {
+    border-right: 1px solid black;
+    border-top: 1px solid black;
+}
+
+#p8 {
+    border-left: 1px solid black;
+    border-top: 1px solid black;
+    border-right: 1px solid black;
+}
+
+#p9 {
+    border-left: 1px solid black;
+    border-top: 1px solid black;
+}
