@@ -3,9 +3,10 @@ var tabuleiro = []; // armazena posições vazias
 var quemJoga = 0; // 0-Jogador; 1-CPU
 var verifica; // armazena o resultado se houve vencedor ou não
 var jogando = true; // indica se o jogo esta rodando ou não
-var nivel = 1; // nivel de dificuldade
+var nivel = 2; // nivel de dificuldade
 var jogadaCpu = 1;
 var quemComeca = 1;
+jogadaAleatoria = false
 
 function cpuJoga() {
     if (jogando) {
@@ -18,9 +19,30 @@ function cpuJoga() {
             jogo[l][c] = 'O'
         } else if (nivel == 2) {
             // NIVEL 2
+            if (quemJoga == 1) {
+                for (l = 0; l < 3; l++) {
+                    do {
+                        l = Math.round(Math.random() * 2)
+                        c = Math.round(Math.random() * 2)
+                    } while (jogo[l][c] != '') {
+                        jogo[l][c] = 'O'
+                        quemJoga = 0
+                        if ((jogo[l][0] == 'X') && (jogo[l][1] == 'X')) {
+                            jogo[l][2] = 'O'
+                        } else if ((jogo[l][1] == 'X') && (jogo[l][2] == 'X')) {
+                            jogo[l][0] = 'O'
+
+                        } else if ((jogo[l][0] == 'X') && (jogo[l][2] == 'X')) {
+                            jogo[l][1] = 'O'
+
+                        }
+                    }
+                }
+            }
         }
+
         verifica = verificaVitoria()
-        if (verifica!="") {
+        if (verifica != "") {
             alert(verifica + " VENCEU!")
             jogando = false
         }
@@ -31,7 +53,7 @@ function cpuJoga() {
 
 function verificaVitoria() {
     var l, c
-    
+
     // Linhas
     for (l = 0; l < 3; l++) {
         if ((jogo[l][0] == jogo[l][1]) && (jogo[l][1] == jogo[l][2])) {
@@ -118,7 +140,7 @@ function jogar(p) {
         if (quemJoga == 1) {
             atualizaTabuleiro()
             verifica = verificaVitoria()
-            if (verifica!="") {
+            if (verifica != "") {
                 alert(verifica + " VENCEU!")
                 jogando = false
             }
@@ -158,6 +180,18 @@ function iniciar() {
         [document.getElementById("p4"), document.getElementById("p5"), document.getElementById("p6")],
         [document.getElementById("p7"), document.getElementById("p8"), document.getElementById("p9")]
     ]
+
+    atualizaTabuleiro()
+    if (quemComeca == 1) {
+        quemComeca = 0
+        quemJoga = quemComeca
+        document.getElementById("dvQuemComeca").innerHTML = "Quem Começa: Jogador"
+    } else {
+        quemComeca = 1
+        quemJoga = quemComeca
+        document.getElementById("dvQuemComeca").innerHTML = "Qiem Começa: CPU"
+        cpuJoga()
+    }
 }
 
 window.addEventListener("load", iniciar)
