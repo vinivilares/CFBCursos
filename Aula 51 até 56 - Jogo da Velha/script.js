@@ -6,38 +6,77 @@ var jogando = true; // indica se o jogo esta rodando ou não
 var nivel = 2; // nivel de dificuldade
 var jogadaCpu = 1;
 var quemComeca = 1;
-jogadaAleatoria = false
+var cpuJogou = 1
+
+function defesa() {
+    for (var l = 0; l < 3; l++) {
+        if (((jogo[l][0] == 'X') && (jogo[l][1] == 'X')) && ((jogo[l][0] == '') && (jogo[l][1] == ''))) {
+            jogo[2][c] = 'O'
+        } else if (((jogo[l][1] == 'X') && (jogo[l][2] == 'X')) && ((jogo[l][1] == '') && (jogo[l][2] == ''))) {
+            jogo[0][c] = 'O'
+        } else if (((jogo[l][0] == 'X') && (jogo[l][2] == 'X')) && ((jogo[l][0] == '') && (jogo[l][2] == ''))) {
+            jogo[1][c] = 'O'
+        }
+    }
+
+    for (var c = 0; c < 3; c++) {
+        if (((jogo[0][c] == 'X') && (jogo[1][c] == 'X')) && ((jogo[0][c] == '') && (jogo[1][c] == ''))) {
+            jogo[2][c] = 'O'
+        } else if (((jogo[1][c] == 'X') && (jogo[2][c] == 'X')) && ((jogo[1][c] == '') && (jogo[2][c] == ''))) {
+            jogo[0][c] = 'O'
+        } else if (((jogo[0][c] == 'X') && (jogo[2][c] == 'X')) && ((jogo[0][c] == '') && (jogo[2][c] == ''))) {
+            jogo[1][c] = 'O'
+        }
+    }
+    quemJoga = 0
+}
+
+function xVaiGanhar() {
+    for (var l = 0; l < 3; l++) {
+        if (((jogo[l][0] == 'X') && (jogo[l][1] == 'X')) && ((jogo[l][0] == '') && (jogo[l][1] == ''))) {
+            return true
+        } else if (((jogo[l][1] == 'X') && (jogo[l][2] == 'X')) && ((jogo[l][1] == '') && (jogo[l][2] == ''))) {
+            return true
+        } else if (((jogo[l][0] == 'X') && (jogo[l][2] == 'X')) && ((jogo[l][0] == '') && (jogo[l][2] == ''))) {
+            return true
+        } else {
+            return false
+        }
+    }
+
+    for (var c = 0; c < 3; c++) {
+        if (((jogo[0][c] == 'X') && (jogo[1][c] == 'X')) && ((jogo[0][c] == '') && (jogo[1][c] == ''))) {
+            return true
+        } else if (((jogo[1][c] == 'X') && (jogo[2][c] == 'X')) && ((jogo[1][c] == '') && (jogo[2][c] == ''))) {
+            return true
+        } else if (((jogo[0][c] == 'X') && (jogo[2][c] == 'X')) && ((jogo[0][c] == '') && (jogo[2][c] == ''))) {
+            return true
+        } else {
+            return false
+        }
+    }
+    quemJoga = 0
+}
+
+function jogadaAleatoria() {
+    do {
+        l = Math.round(Math.random() * 2)
+        c = Math.round(Math.random() * 2)
+    } while (jogo[l][c] != '') {
+        jogo[l][c] = 'O'
+    }
+}
 
 function cpuJoga() {
     if (jogando) {
-        var l, c;
         if (nivel == 1) {
-            do {
-                l = Math.round(Math.random() * 2)
-                c = Math.round(Math.random() * 2)
-            } while (jogo[l][c] != '')
-            jogo[l][c] = 'O'
+            jogadaAleatoria()
         } else if (nivel == 2) {
             // NIVEL 2
-            if (quemJoga == 1) {
-                for (l = 0; l < 3; l++) {
-                    do {
-                        l = Math.round(Math.random() * 2)
-                        c = Math.round(Math.random() * 2)
-                    } while (jogo[l][c] != '') {
-                        jogo[l][c] = 'O'
-                        quemJoga = 0
-                        if ((jogo[l][0] == 'X') && (jogo[l][1] == 'X')) {
-                            jogo[l][2] = 'O'
-                        } else if ((jogo[l][1] == 'X') && (jogo[l][2] == 'X')) {
-                            jogo[l][0] = 'O'
-
-                        } else if ((jogo[l][0] == 'X') && (jogo[l][2] == 'X')) {
-                            jogo[l][1] = 'O'
-
-                        }
-                    }
-                }
+            if (xVaiGanhar() == true) {
+                defesa()
+            } else {
+                jogadaAleatoria()
             }
         }
 
