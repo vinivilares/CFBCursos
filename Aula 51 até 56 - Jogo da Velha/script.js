@@ -6,56 +6,84 @@ var jogando = true; // indica se o jogo esta rodando ou não
 var nivel = 2; // nivel de dificuldade
 var jogadaCpu = 1;
 var quemComeca = 1;
-var cpuJogou = 1
+var cpuJogou = 1;
 
 function defesa() {
+    // Linhas
     for (var l = 0; l < 3; l++) {
-        if (((jogo[l][0] == 'X') && (jogo[l][1] == 'X')) && ((jogo[l][0] == '') && (jogo[l][1] == ''))) {
-            jogo[2][c] = 'O'
-        } else if (((jogo[l][1] == 'X') && (jogo[l][2] == 'X')) && ((jogo[l][1] == '') && (jogo[l][2] == ''))) {
-            jogo[0][c] = 'O'
-        } else if (((jogo[l][0] == 'X') && (jogo[l][2] == 'X')) && ((jogo[l][0] == '') && (jogo[l][2] == ''))) {
-            jogo[1][c] = 'O'
+        if ((jogo[l][0] == 'X') && (jogo[l][1] == 'X') && (jogo[l][2] == '')) {
+            jogo[l][2] = 'O'
+        } else if ((jogo[l][0] == 'X') && (jogo[l][2] == 'X') && (jogo[l][1] == '')) {
+            jogo[l][1] = 'O'
+        } else if ((jogo[l][1] == 'X') && (jogo[l][2] == 'X') && (jogo[l][0] == '')) {
+            jogo[l][0] = 'O'
         }
     }
 
+    // Colunas
     for (var c = 0; c < 3; c++) {
-        if (((jogo[0][c] == 'X') && (jogo[1][c] == 'X')) && ((jogo[0][c] == '') && (jogo[1][c] == ''))) {
+        if ((jogo[0][c] == 'X') && (jogo[1][c] == 'X') && (jogo[2][c] == '')) {
             jogo[2][c] = 'O'
-        } else if (((jogo[1][c] == 'X') && (jogo[2][c] == 'X')) && ((jogo[1][c] == '') && (jogo[2][c] == ''))) {
-            jogo[0][c] = 'O'
-        } else if (((jogo[0][c] == 'X') && (jogo[2][c] == 'X')) && ((jogo[0][c] == '') && (jogo[2][c] == ''))) {
+        } else if ((jogo[0][c] == 'X') && (jogo[2][c] == 'X') && (jogo[1][c] == '')) {
             jogo[1][c] = 'O'
+        } else if ((jogo[1][c] == 'X') && (jogo[2][c] == 'X') && (jogo[0][c] == '')) {
+            jogo[0][c] = 'O'
         }
     }
-    quemJoga = 0
+
+    //Diagonais
+    if ((jogo[0][0] == 'X') && (jogo[1][1] == 'X') && (jogo[2][2] == '')) {
+        jogo[2][2] = 'O'
+    } else if ((jogo[0][0] == 'X') && (jogo[2][2] == 'X') && (jogo[1][1] == '')) {
+        jogo[1][1] = 'O'
+    } else if ((jogo[1][1] == 'X') && (jogo[2][2]) == 'X' && (jogo[0][0] == '')) {
+        jogo[0][0] = 'O'
+    } else if ((jogo[0][2] == 'X') && (jogo[1][1] == 'X') && (jogo[2][0] == '')) {
+        jogo[2][0] = 'O'
+    } else if ((jogo[0][2] == 'X') && (jogo[2][0] == 'X') && (jogo[1][1] == '')) {
+        jogo[1][1] = 'O'
+    } else if ((jogo[2][0] == 'X') && (jogo[1][1] == 'X') && (jogo[0][2] == '')) {
+        jogo[0][2] = 'O'
+    }
 }
 
 function xVaiGanhar() {
+    // Linhas
     for (var l = 0; l < 3; l++) {
-        if (((jogo[l][0] == 'X') && (jogo[l][1] == 'X')) && ((jogo[l][0] == '') && (jogo[l][1] == ''))) {
+        if ((jogo[l][0] == 'X') && (jogo[l][1] == 'X') && (jogo[l][2] == '')) {
             return true
-        } else if (((jogo[l][1] == 'X') && (jogo[l][2] == 'X')) && ((jogo[l][1] == '') && (jogo[l][2] == ''))) {
+        } else if ((jogo[l][0] == 'X') && (jogo[l][2] == 'X') && (jogo[l][1] == '')) {
             return true
-        } else if (((jogo[l][0] == 'X') && (jogo[l][2] == 'X')) && ((jogo[l][0] == '') && (jogo[l][2] == ''))) {
+        } else if ((jogo[l][1] == 'X') && (jogo[l][2] == 'X') && (jogo[l][0] == '')) {
             return true
-        } else {
-            return false
         }
     }
 
+    // Colunas
     for (var c = 0; c < 3; c++) {
-        if (((jogo[0][c] == 'X') && (jogo[1][c] == 'X')) && ((jogo[0][c] == '') && (jogo[1][c] == ''))) {
+        if ((jogo[0][c] == 'X') && (jogo[1][c] == 'X') && (jogo[2][c] == '')) {
             return true
-        } else if (((jogo[1][c] == 'X') && (jogo[2][c] == 'X')) && ((jogo[1][c] == '') && (jogo[2][c] == ''))) {
+        } else if ((jogo[0][c] == 'X') && (jogo[2][c] == 'X') && (jogo[1][c] == '')) {
             return true
-        } else if (((jogo[0][c] == 'X') && (jogo[2][c] == 'X')) && ((jogo[0][c] == '') && (jogo[2][c] == ''))) {
+        } else if ((jogo[1][c] == 'X') && (jogo[2][c] == 'X') && (jogo[0][c] == '')) {
             return true
-        } else {
-            return false
         }
     }
-    quemJoga = 0
+
+    // Diagonais
+    if ((jogo[0][0] == 'X') && (jogo[1][1] == 'X') && (jogo[2][2] == '')) {
+        return true
+    } else if ((jogo[0][0] == 'X') && (jogo[2][2] == 'X') && (jogo[1][1] == '')) {
+        return true
+    } else if ((jogo[1][1] == 'X') && (jogo[2][2]) == 'X' && (jogo[0][0] == '')) {
+        return true
+    } else if ((jogo[0][2] == 'X') && (jogo[1][1] == 'X') && (jogo[2][0] == '')) {
+        return true
+    } else if ((jogo[0][2] == 'X') && (jogo[2][0] == 'X') && (jogo[1][1] == '')) {
+        return true
+    } else if ((jogo[2][0] == 'X') && (jogo[1][1] == 'X') && (jogo[0][2] == '')) {
+        return true
+    }
 }
 
 function jogadaAleatoria() {
@@ -79,15 +107,15 @@ function cpuJoga() {
                 jogadaAleatoria()
             }
         }
-
-        verifica = verificaVitoria()
-        if (verifica != "") {
-            alert(verifica + " VENCEU!")
-            jogando = false
-        }
-        atualizaTabuleiro()
-        quemJoga = 0
     }
+
+    verifica = verificaVitoria()
+    if (verifica != "") {
+        alert(verifica + " VENCEU!")
+        jogando = false
+    }
+    atualizaTabuleiro()
+    quemJoga = 0
 }
 
 function verificaVitoria() {
