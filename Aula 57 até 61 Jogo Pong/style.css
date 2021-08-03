@@ -1,22 +1,31 @@
 body {
     margin: 0px;
-    background-color: #aaa;
 }
 
-#dvPainel {
-    display: flex;
-    height: 50px;
-    align-items: center;
+#bg-img {
+    width: 100%;
+    height: 100vh;
+    background-image: url('img/bg.jpg');
+    filter: blur(5px);
 }
 
-.itemPainel {
-    margin: 5px;
+#jogo {
+    position: absolute;
+    top: 20px;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    width: 960px;
+    height: 500px;
+    border: 5px solid white;
 }
 
 #dvJogo {
+    position: relative;
     width: 960px;
     height: 500px;
-    border: 1px solid #000;
     background-color: #000;
 }
 
@@ -26,14 +35,14 @@ body {
     left: 475px;
     width: 20px;
     height: 20px;
-    background-color: #888;
+    background-color: #fff;
 }
 
 .barra {
     position: absolute;
     width: 20px;
     height: 140px;
-    background-color: #888;
+    background-color: #fff;
     top: 180px;
 }
 
@@ -43,4 +52,40 @@ body {
 
 .direita {
     left: 930px;
+}
+
+#dvPainel {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 10px;
+}
+
+button, input {
+    height: 50px;
+    font-size: 2rem;
+    text-transform: uppercase;
+}
+
+button {
+    border: none;
+}
+
+button:focus {
+    outline: none;
+}
+
+button:hover {
+    cursor: pointer;
+    box-shadow: #000 5px 5px;
+}
+
+input {
+    text-align: center;
+    width: 50px;
+    border: none;
+    margin: 0 10px;
+}
+
+input:focus {
+    outline: none;
 }

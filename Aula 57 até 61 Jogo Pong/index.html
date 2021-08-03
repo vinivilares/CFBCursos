@@ -10,20 +10,22 @@
 </head>
 
 <body>
-    <div id="dvJogo">
-        <div id="dvBola"></div>
-        <div id="dvJogador" class="barra esquerda"></div>
-        <div id="dvCpu" class="barra direita"></div>
-    </div>
-    <div id="dvPainel">
-        <div class="itemPainel">
-            <label for="">Pontos</label>
-            <input type="text" id="txtPontos" value="0" size="10">
+    <div id="bg-img"></div>
+        <div id="jogo">
+            <div id="dvJogo">
+                <div id="dvBola"></div>
+                <div id="dvJogador" class="barra esquerda"></div>
+                <div id="dvCpu" class="barra direita"></div>
+            </div>
+            <div id="dvPainel">
+                <div class="itemPainel">
+                    <!-- <label for="">Pontos</label> -->
+                    <input type="text" id="txtPontosPlayer" value="0" size="10" readonly>
+                    <button id="btIniciar">Iniciar</button>
+                    <input type="text" id="txtPontosCpu" value="0" size="10" readonly>
+                </div>
+            </div>
         </div>
-        <div class="itemPainel">
-            <button id="btIniciar">Iniciar</button>
-        </div>
-    </div>
     <script src="script.js"></script>
 </body>
 
