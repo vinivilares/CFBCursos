@@ -9,3 +9,4 @@ function fechaJanela() {
     minhaJanela1.close();
     minhaJanela2.close();
 }
+
