@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>P2</title>
+    <style>
+        body {
+            background-color: #008;
+            color: #fff;
+        }
+    </style>
+    <script>
+        function inicia() {
+            document.getElementById("painel").innerHTML = sessionStorage.nome;
+        }
+
+        window.addEventListener("load", inicia);
+    </script>
+</head>
+
+<body>
+    <h2>Página 3</h2>
+    <div id="painel"></div>
+</body>
+
+</html>
